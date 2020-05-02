@@ -21,10 +21,18 @@ body
             input#name.form-control(type='text', placeholder='' name='name')
         button.btn.btn-primary(type='submit') Submit
     p Hello `+input
+    console.log("default compile");
+    // #1
     var fn = jade.compile(template);
     var html = fn();
-    console.log("updated code");
-    console.log(input);
+    // #2
+    console.log("inline compile");
+    var inlineOutput = jade.compile(template)();
+
+    // #3 
+    console.log("render call");
+    var renderOutput = jade.render(template);
+    //var html = fn();
     console.log(html);
     return "html";
 }
